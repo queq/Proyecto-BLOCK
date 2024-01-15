@@ -3,11 +3,6 @@ pragma solidity ^0.8.20;
 
 import "OpenZeppelin-Ownable/access/Ownable.sol";
 
-/**
- * @title Urna
- * @dev Implementación de un contrato inteligente para urna de votaciones
- * @custom:dev-run-script ./contracts/Urna.sol
- */
 contract Urna is Ownable {
     constructor(address initialOwner) Ownable(initialOwner) {}
     
@@ -21,6 +16,10 @@ contract Urna is Ownable {
         uint256 fechaHoraInicio;
     }
 
+    struct Partido {
+        string nombre;
+    }
+
     struct Candidato {
         string nombre;
         string partido;
@@ -32,13 +31,13 @@ contract Urna is Ownable {
         bool haVotado;
     }
 
+    Partido[] public partidos;
     Candidato[] public candidatos;
     Participante[] public participantes;
     Jornada public jornadaVotacion;
 
     mapping (address => uint) votoACandidato;
     mapping (address => uint) inscripcionParticipante;
-    mapping (string => uint) candidatoPartido;
 
     modifier mayorDeEdad(uint8 _edad) {
         require(_edad >= 18);
@@ -68,6 +67,7 @@ contract Urna is Ownable {
 
     function _crearParticipante(string memory _nombre) internal {
         participantes.push(Participante(_nombre, false));
+
         inscripcionParticipante[msg.sender] = uint(participantes.length - 1);
     }
 
@@ -79,12 +79,23 @@ contract Urna is Ownable {
 
     function _crearCandidato(string memory _partido, string memory _nombre) internal {
         candidatos.push(Candidato(_nombre, _partido, 0));
-        candidatoPartido[_partido] = uint(candidatos.length - 1);
+    }
+
+    function _crearPartido(string memory _partido, bool _partidoExiste) internal {
+        require(!_partidoExiste);
+        partidos.push(Partido(_partido));
     }
 
     function inscribirCandidato(string memory _partido, string memory _nombre) public onlyOwner dentroDePlazoInscripciones {
-        require(candidatoPartido[_partido] == 0);
+        bool partidoExiste = false;
 
+        for (uint i = 0; i < partidos.length; i++) {
+            if (keccak256(abi.encodePacked(partidos[i].nombre)) == keccak256(abi.encodePacked(_partido))) {
+                partidoExiste = true;
+            }
+        }
+
+        _crearPartido(_partido, partidoExiste);
         _crearCandidato(_partido, _nombre);
     }
 
