@@ -1,0 +1,539 @@
+{
+	"compiler": {
+		"version": "0.8.22+commit.4fc1097e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnableInvalidOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "OwnableUnauthorizedAccount",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "idCandidato",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "nombreCandidato",
+						"type": "string"
+					}
+				],
+				"name": "VotoRegistrado",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "candidatos",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "nombre",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "partido",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "votos",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_nombre",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_fechaHoraInicio",
+						"type": "uint256"
+					}
+				],
+				"name": "crearJornada",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_idCandidato",
+						"type": "uint256"
+					}
+				],
+				"name": "enviarVoto",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "finPruebas",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_partido",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_nombre",
+						"type": "string"
+					}
+				],
+				"name": "inscribirCandidato",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_nombre",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_edad",
+						"type": "uint8"
+					}
+				],
+				"name": "inscribirParticipante",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "jornadaVotacion",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "nombre",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fechaHoraInicio",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "participantes",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "nombre",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "haVotado",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "partidos",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "nombre",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarAsignacionParticipante",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionCandidatos",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionJornada",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionNuevaJornada",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionParticipante1",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionParticipante2",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionParticipante3",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionParticipante4",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionParticipante5",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_idCandidato",
+						"type": "uint256"
+					}
+				],
+				"name": "verCandidato",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "verNumeroCandidatos",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "verResultadoVotaciones",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "nombre",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "partido",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "votos",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Urna.Candidato[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "verTotalVotos",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"errors": {
+				"OwnableInvalidOwner(address)": [
+					{
+						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
+					}
+				],
+				"OwnableUnauthorizedAccount(address)": [
+					{
+						"details": "The caller account is not authorized to perform an operation."
+					}
+				]
+			},
+			"kind": "dev",
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"finPruebas()": {
+					"notice": "#sender: account-0"
+				},
+				"probarAsignacionParticipante()": {
+					"notice": "#sender: account-4"
+				},
+				"probarCreacionCandidatos()": {
+					"notice": "#sender: account-0"
+				},
+				"probarCreacionJornada()": {
+					"notice": "#sender: account-0"
+				},
+				"probarCreacionNuevaJornada()": {
+					"notice": "#sender: account-0"
+				},
+				"probarCreacionParticipante1()": {
+					"notice": "#sender: account-1"
+				},
+				"probarCreacionParticipante2()": {
+					"notice": "#sender: account-2"
+				},
+				"probarCreacionParticipante3()": {
+					"notice": "#sender: account-3"
+				},
+				"probarCreacionParticipante4()": {
+					"notice": "#sender: account-4"
+				},
+				"probarCreacionParticipante5()": {
+					"notice": "#sender: account-5"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tests/Urna_test.sol": "testSuite"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"OpenZeppelin-Ownable/access/Ownable.sol": {
+			"keccak256": "0xb4ca8992ab88e571d20176172261ae21be895b6dd54545bbac95485cc64cd136",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b91878b60ca4fad18b09526351199bcc7e39dcdc7b9136ddbd5dc757801df793",
+				"dweb:/ipfs/QmNV3DKiTHbkrMzqtavXS5K7DCnz77a8Zpik8wJ4oPjQKq"
+			]
+		},
+		"OpenZeppelin-Ownable/utils/Context.sol": {
+			"keccak256": "0xf7f34d6b828cb25c03eb24e6fbabf33be744f3960a2b2260614a17cb4d2f917b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://972f3a4cb1c9d607f5432c08e1d76a381f51e5c9af0092110fae07f282f56841",
+				"dweb:/ipfs/Qma4Q56ZNCYrBuevLSMz7SrvFdakqpJ4gqLsBRQSt9zHGe"
+			]
+		},
+		"contracts/Urna.sol": {
+			"keccak256": "0x6b10d57bbbebbcaf09b59d767c46cd27c412137914266d5bd27d2e5be5a0c31f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3a73bfc06673deab3c01fada1a4cb26fa274cd8686c3a0226d28946e22059f1e",
+				"dweb:/ipfs/QmcYuLXz56CFJ9Wfu7qCYMEj9PE9TVThUdKfP2jeP9N8hY"
+			]
+		},
+		"remix_accounts.sol": {
+			"keccak256": "0xab088ffd1cd1033f54c2486f151b5d02281a3b76724c8e6f48479c25a4f7809e",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5ddaf9976b1838f7028cbedfaf7f6e1cf8c898e100221176ff1406ee8b599f23",
+				"dweb:/ipfs/QmX2FYLXYyo5Cn55ZX2CfngpscSh4mQhcMVzQdQsh2vqcG"
+			]
+		},
+		"remix_tests.sol": {
+			"keccak256": "0xe2783cdc204cba8c72494119339f1d90f9022b15d6c718c668b7f097d8e29787",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://bb6a22e64c7f16bcaab63b1c1a1b269d5be8a6d37bdd9dec1718477ab916b18e",
+				"dweb:/ipfs/QmdkW1tT5iadBvaHMCoskhDGZKnfdg8o1D9CcoQYtdJet7"
+			]
+		},
+		"tests/Urna_test.sol": {
+			"keccak256": "0x893d88db09013a137fb4fea348066cca09dbf3b30b5f6fb43094fbe755757143",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://f72a9d1a635888a08f475364cdc21c77ab23b37213767b8ad5afe607be26c329",
+				"dweb:/ipfs/QmcvR9UQfPitKKY8493FyVTDb9M8hwr8wMecH8h2kBQkhr"
+			]
+		}
+	},
+	"version": 1
+}
