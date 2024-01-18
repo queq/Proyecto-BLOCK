@@ -228,6 +228,25 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "partidos",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "nombre",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "renounceOwnership",
 				"outputs": [],
@@ -326,11 +345,22 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "verVoto",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
-			"custom:dev-run-script": "./contracts/Urna.sol",
-			"details": "Implementación de un contrato inteligente para urna de votaciones",
 			"errors": {
 				"OwnableInvalidOwner(address)": [
 					{
@@ -355,7 +385,6 @@
 					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
 				}
 			},
-			"title": "Urna",
 			"version": 1
 		},
 		"userdoc": {
@@ -397,11 +426,11 @@
 			]
 		},
 		"contracts/Urna.sol": {
-			"keccak256": "0xaf0312f548131f859fedd59c77d9f597129c02a07445d295c8b0cc7338f9890c",
+			"keccak256": "0x3da173f2993c7d1c7ae8a9dc70076dff2bad25ebf0c76d6648c3401df832c095",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8cc078cef2692edbb40a21cacffb3b83281bb5fb76b750d4fc108acecc2258d8",
-				"dweb:/ipfs/QmcV5nZNWiWQjXNc8vYVkcMykLhuawYJaGfgjBAikT96YV"
+				"bzz-raw://b639c1696da937099fcd67472bdcef6ba5f2f185a4ed5f58c15be89c1f58cd1a",
+				"dweb:/ipfs/QmW1hggxQDWf3Cp2eLNuEjvNfRZYP2PrQcGvsM88nWABFm"
 			]
 		}
 	},

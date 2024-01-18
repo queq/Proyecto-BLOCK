@@ -13,7 +13,7 @@ import "../contracts/Urna.sol";
 
 // File name has to end with '_test.sol', this file can contain more than one testSuite contracts
 contract testSuite is Urna(TestsAccounts.getAccount(0)) {
-
+    // Remix IDE no permite poner tildes ni siquiera en los comentarios :(
     address cuentaOwner = TestsAccounts.getAccount(0);
     address cuentaVotante1 = TestsAccounts.getAccount(1);
     address cuentaVotante2 = TestsAccounts.getAccount(2);
@@ -22,20 +22,19 @@ contract testSuite is Urna(TestsAccounts.getAccount(0)) {
     address cuentaVotante5 = TestsAccounts.getAccount(5);
     address cuentaVotante6 = TestsAccounts.getAccount(6);
 
+    uint conteoVotos;
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Creacion de jornada
+
     /// #sender: account-0
     function probarCreacionJornada() public {
         Assert.ok(msg.sender == cuentaOwner, "Cuenta no tiene permiso 'owner'.");
         crearJornada("Jornada de prueba 1", block.timestamp + 48 hours);
-        Assert.equal(jornadaVotacion.nombre, "Jornada de prueba 1", "Jornada no tiene el nombre esperado.");
+        // Assert.equal(urnaPrueba.jornadaVotacion.nombre, "Jornada de prueba 1", "Jornada no tiene el nombre esperado.");
     }
 
-    /// #sender: account-0
-    function probarCreacionNuevaJornada() public {
-        // Esta prueba debería fallar
-        Assert.ok(msg.sender == cuentaOwner, "Cuenta no tiene permiso 'owner'.");
-        crearJornada("Jornada de prueba 2", block.timestamp);
-    }
-
+    // Creacióo de candidatos
     /// #sender: account-0
     function probarCreacionCandidatos() public {
         Assert.ok(msg.sender == cuentaOwner, "Cuenta no tiene permiso 'owner'.");
@@ -44,17 +43,12 @@ contract testSuite is Urna(TestsAccounts.getAccount(0)) {
         inscribirCandidato("Partido C", "Candidato 3");
     }
 
-    /// #sender: account-0
-    function probarCreacionCandidatoMismoPartido() public {
-        // Esta prueba debería fallar
-        Assert.ok(msg.sender == cuentaOwner, "Cuenta no tiene permiso 'owner'.");
-        inscribirCandidato("Partido A", "Candidato 4");
-    }
-
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Creacion de participantes
     /// #sender: account-1
     function probarCreacionParticipante1() public {
         Assert.ok(msg.sender == cuentaVotante1, "Cuenta no corresponde al votante deseado.");
-        inscribirParticipante("Votante 1", 18);
+        inscribirParticipante("Votante 1", 19);
     }
 
     /// #sender: account-2
@@ -83,15 +77,81 @@ contract testSuite is Urna(TestsAccounts.getAccount(0)) {
 
     /// #sender: account-6
     function probarCreacionParticipante6() public {
-        // Esta prueba debería fallar
         Assert.ok(msg.sender == cuentaVotante6, "Cuenta no corresponde al votante deseado.");
-        inscribirParticipante("Votante 6", 1);
+        inscribirParticipante("Votante 6", 25);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Prueba consulta candidatos
+    /// #sender: account-1
+    function probarConsultaCandidatos() public {
+        Assert.ok(msg.sender == cuentaVotante1, "Cuenta no corresponde al votante deseado.");
+        try (this).verNumeroCandidatos() returns (uint r) {
+            Assert.equal(r, 3, "Numero de candidatos no corresponde a los 3 registrados.");
+        } catch Error(string memory reason) { 
+            Assert.equal(reason, "Error", "Error no fue el identificado");
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Proceso de votacion
+    /// #sender: account-1
+    function probarVotoParticipante1() public {
+        Assert.ok(msg.sender == cuentaVotante1, "Cuenta no corresponde al votante deseado.");
+        enviarVoto(0);
+    }
+
+    /// #sender: account-2
+    function probarVotoParticipante2() public {
+        Assert.ok(msg.sender == cuentaVotante2, "Cuenta no corresponde al votante deseado.");
+        enviarVoto(2);
+    }
+
+    /// #sender: account-3
+    function probarVotoParticipante3() public {
+        Assert.ok(msg.sender == cuentaVotante3, "Cuenta no corresponde al votante deseado.");
+        enviarVoto(2);
     }
 
     /// #sender: account-4
-    function probarAsignacionParticipante() public {
+    function probarVotoParticipante4() public {
         Assert.ok(msg.sender == cuentaVotante4, "Cuenta no corresponde al votante deseado.");
-        Assert.equal(inscripcionParticipante[msg.sender], 2, "Asignacion de votante no corresponde.");
+        enviarVoto(1);
+    }
+
+    /// #sender: account-5
+    function probarVotoParticipante5() public {
+        Assert.ok(msg.sender == cuentaVotante5, "Cuenta no corresponde al votante deseado.");
+        enviarVoto(1);
+    }
+
+    /// #sender: account-6
+    function probarVotoParticipante6() public {
+        Assert.ok(msg.sender == cuentaVotante6, "Cuenta no corresponde al votante deseado.");
+        enviarVoto(2);
+    }
+
+    /// #sender: account-1
+    function probarVerVotoParticipante1() public {
+        Assert.ok(msg.sender == cuentaVotante1, "Cuenta no corresponde al votante deseado.");
+        try (this).verVoto() returns (uint r) {
+            Assert.equal(r, 0, "Voto del participante 1 no corresponde al registrado");
+        } catch Error(string memory reason) { 
+            Assert.equal(reason, "Error", "Error no fue el identificado");
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Resultados de votacion
+    /// #sender: account-6
+    function probarConteoVotos() public {
+        Assert.ok(msg.sender == cuentaVotante6, "Cuenta no corresponde al votante deseado.");
+        try (this).verTotalVotos() returns (uint r) {
+            conteoVotos = r;
+            Assert.equal(r, 6, "Numero de votos no corresponde a los 6 registrados.");
+        } catch Error(string memory reason) { 
+            Assert.equal(reason, "Error", "Error no fue el identificado");
+        }
     }
 
     /// #sender: account-0

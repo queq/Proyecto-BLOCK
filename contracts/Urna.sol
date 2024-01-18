@@ -124,6 +124,10 @@ contract Urna is Ownable {
         emit VotoRegistrado(votoACandidato[msg.sender], candidatoVoto.nombre);
     }
 
+    function verVoto() external view duranteJornada returns(uint) {
+        return votoACandidato[msg.sender];
+    }
+
     function verTotalVotos() external view despuesDeJornada returns(uint) {
         uint counter = 0;
 

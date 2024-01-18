@@ -126,6 +126,13 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "finPruebas",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "string",
@@ -217,6 +224,32 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "partidos",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "nombre",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarAsignacionParticipante",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "probarCreacionCandidatos",
 				"outputs": [],
@@ -226,6 +259,48 @@
 			{
 				"inputs": [],
 				"name": "probarCreacionJornada",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionNuevaJornada",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionParticipante1",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionParticipante2",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionParticipante3",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionParticipante4",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "probarCreacionParticipante5",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -360,7 +435,38 @@
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {},
+			"methods": {
+				"finPruebas()": {
+					"notice": "#sender: account-0"
+				},
+				"probarAsignacionParticipante()": {
+					"notice": "#sender: account-4"
+				},
+				"probarCreacionCandidatos()": {
+					"notice": "#sender: account-0"
+				},
+				"probarCreacionJornada()": {
+					"notice": "#sender: account-0"
+				},
+				"probarCreacionNuevaJornada()": {
+					"notice": "#sender: account-0"
+				},
+				"probarCreacionParticipante1()": {
+					"notice": "#sender: account-1"
+				},
+				"probarCreacionParticipante2()": {
+					"notice": "#sender: account-2"
+				},
+				"probarCreacionParticipante3()": {
+					"notice": "#sender: account-3"
+				},
+				"probarCreacionParticipante4()": {
+					"notice": "#sender: account-4"
+				},
+				"probarCreacionParticipante5()": {
+					"notice": "#sender: account-5"
+				}
+			},
 			"version": 1
 		}
 	},
@@ -397,11 +503,11 @@
 			]
 		},
 		"contracts/Urna.sol": {
-			"keccak256": "0x45ebe9e4ecb3c7fcfd645db6ad0e3a5c774c21fba83bbe486fa99a47e8cc5adb",
+			"keccak256": "0x6b10d57bbbebbcaf09b59d767c46cd27c412137914266d5bd27d2e5be5a0c31f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4452d450e6ec66521a31b1d0adec1b1b14d641013c79292b9f9b3c8f1a146d1f",
-				"dweb:/ipfs/QmNSg9qPzznYxCUtdaPBWgpJHoBpVYJxZdDXQpbxLbskz9"
+				"bzz-raw://3a73bfc06673deab3c01fada1a4cb26fa274cd8686c3a0226d28946e22059f1e",
+				"dweb:/ipfs/QmcYuLXz56CFJ9Wfu7qCYMEj9PE9TVThUdKfP2jeP9N8hY"
 			]
 		},
 		"remix_accounts.sol": {
@@ -421,11 +527,11 @@
 			]
 		},
 		"tests/Urna_test.sol": {
-			"keccak256": "0x45b85e846d66b6e719370a45aea820233a82ef1d730b0c55920c4d4c02b1116a",
+			"keccak256": "0x893d88db09013a137fb4fea348066cca09dbf3b30b5f6fb43094fbe755757143",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://7403c30324d488434edb48decd99542f402004d1f2c27cc8d2fbaf58cec4856a",
-				"dweb:/ipfs/QmaYXSuBv9VTRBeoAsavBszeNsAWP54wUeRbeY4eFdJCkp"
+				"bzz-raw://f72a9d1a635888a08f475364cdc21c77ab23b37213767b8ad5afe607be26c329",
+				"dweb:/ipfs/QmcvR9UQfPitKKY8493FyVTDb9M8hwr8wMecH8h2kBQkhr"
 			]
 		}
 	},
